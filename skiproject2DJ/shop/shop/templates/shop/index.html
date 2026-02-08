@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SkiShop - Магазин горнолыжного снаряжения</title>
-    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link rel="stylesheet" href="{% static 'shop/css/style.css' %}">
     <style>
         * {
             margin: 0;
@@ -794,10 +794,10 @@
             </div>
             <div class="hero-image">
                 <div class="hero-product">
-                    <img src="shop/static/icons/id2.png" alt="Сноуборды">
+                    <img src="{% static 'shop/icons/id2.png' %}" alt="Сноуборды">
                 </div>
                 <div class="hero-product">
-                    <img src="shop/static/icons/id3.png" alt="Сноуборды">
+                    <img src="{% static 'shop/icons/id3.png' %}" alt="Сноуборды">
                 </div>
             </div>
         </div>
@@ -848,7 +848,7 @@
             <a href="{% url 'catalog' 'snowboards' %}" class="category-card">
                 <div class="category-image">
                     <div>
-                        <img src="shop/static/icons/snowboard1.jpeg" alt="snowboards">
+                        <img src="{% static 'shop/icons/snowboard1.jpeg' %}" alt="snowboards">
                     </div>
                 </div>
                 <div class="category-info">
@@ -860,7 +860,7 @@
             <a href="{% url 'catalog' 'skis' %}" class="category-card">
                 <div class="category-image">
                     <div>
-                        <img src="shop/static/icons/ski1.jpeg" alt="skis">
+                        <img src="{% static 'shop/icons/ski1.jpeg' %}" alt="skis">
                     </div>
                 </div>
                 <div class="category-info">
@@ -872,7 +872,7 @@
             <a href="{% url 'catalog' 'arrivals' %}" class="category-card">
                 <div class="category-image logo">
                     <div>
-                         <img src="shop/static/icons/arrivals.png" alt="arrivals">
+                         <img src="{% static 'shop/icons/arrivals.png' %}" alt="arrivals">
                     </div>
                 </div>
                 <div class="category-info">
@@ -884,7 +884,7 @@
             <a href="{% url 'catalog' 'sales' %}" class="category-card">
                 <div class="category-image logo">
                     <div>
-                         <img src="shop/static/icons/sales.png" alt="sales">
+                         <img src="{% static 'shop/icons/sales.png' %}" alt="sales">
                     </div>
                 </div>
                 <div class="category-info">

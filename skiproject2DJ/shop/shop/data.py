@@ -10,7 +10,7 @@ products = [
         "price": 520,
         "is_sale": True,
         "is_new": False,
-        "image": "icons/id1.png",
+        "image": "shop/icons/id1.png",
         "desc": "Універсальна дошка для парку і гір."
     },
     {
@@ -23,7 +23,7 @@ products = [
         "price": 610,
         "is_sale": False,
         "is_new": True,
-        "image": "icons/id2.png",
+        "image": "shop/icons/id2.png",
         "desc": "Фрістайл, пружність, стабільність на швидкості."
     },
     {
@@ -36,7 +36,7 @@ products = [
         "price": 480,
         "is_sale": False,
         "is_new": True,
-        "image": "icons/id3.png",
+        "image": "shop/icons/id3.png",
         "desc": "Легкі лижі для універсального катання."
     },
     {
@@ -49,7 +49,7 @@ products = [
         "price": 530,
         "is_sale": False,
         "is_new": True,
-        "image": "icons/id4.png",
+        "image": "shop/icons/id4.png",
         "desc": "Легкий сноуборд для універсального катання."
     },
     {
@@ -62,7 +62,7 @@ products = [
         "price": 640,
         "is_sale": False,
         "is_new": False,
-        "image": "icons/id5.png",
+        "image": "shop/icons/id5.png",
         "desc": "Легкий сноуборд для універсального катання.",
     },
     {
@@ -75,7 +75,7 @@ products = [
         "price": 525,
         "is_sale": False,
         "is_new": False,
-        "image": "icons/id6.png",
+        "image": "shop/icons/id6.png",
         "desc": "Легкий сноуборд для універсального катання.",
     },
     {
@@ -88,7 +88,7 @@ products = [
         "level": "Intermediate",
         "is_sale": False,
         "is_new": False,
-        "image": "icons/id7.png",
+        "image": "shop/icons/id7.png",
         "desc": "Легкий сноуборд для універсального катання.",
     },
     {
@@ -101,7 +101,7 @@ products = [
         "level": "Advanced",
         "is_sale": False,
         "is_new": False,
-        "image": "icons/id8.png",
+        "image": "shop/icons/id8.png",
         "desc": "Легкий сноуборд для універсального катання.",
     },
     {
@@ -114,7 +114,7 @@ products = [
         "price": 520,
         "is_sale": False,
         "is_new": False,
-        "image": "icons/id9.png",
+        "image": "shop/icons/id9.png",
         "desc": "Легкі лижі для універсального катання."
     },
     {
@@ -127,7 +127,7 @@ products = [
         "price": 749,
         "is_sale": False,
         "is_new": True,
-        "image": "icons/id10.png",
+        "image": "shop/icons/id10.png",
         "desc": "Легкі лижі для універсального катання."
     },
     {
@@ -140,7 +140,7 @@ products = [
         "price": 899,
         "is_sale": False,
         "is_new": False,
-        "image": "icons/id11.png",
+        "image": "shop/icons/id11.png",
         "desc": "Легкі лижі для універсального катання."
     },
     {
@@ -153,7 +153,7 @@ products = [
         "price": 679,
         "is_sale": True,
         "is_new": False,
-        "image": "icons/id12.png",
+        "image": "shop/icons/id12.png",
         "desc": "Легкі лижі для універсального катання."
     },
 ]

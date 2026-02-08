@@ -109,7 +109,7 @@ def catalog(request, category):
     else:
         base_products = [p for p in products_obj if p.category == category]
 
-    return render(request, "catalog.html", {
+    return render(request, "shop/catalog.html", {
         "products": filtered,
         "category": category,
         "count": len(filtered),
@@ -148,7 +148,7 @@ def product_page(request, pid):
         if p.category == product.category and p.id != pid
     ][:4]
 
-    return render(request, "product.html", {
+    return render(request, "shop/product.html", {
         "product": product,
         "related": related
     })
@@ -179,7 +179,7 @@ def cart(request):
     items = cart_products(cart_ids)
     total = sum(p["price"] for p in items)
 
-    return render(request, "cart.html", {
+    return render(request, "shop/cart.html", {
         "products": items,
         "total": total
     })
@@ -191,7 +191,7 @@ def cart(request):
 def checkout(request):
     if request.method == "POST":
         return redirect("/")
-    return render(request, "checkout.html")
+    return render(request, "shop/checkout.html")
 
 
 # -------- Auth --------
@@ -205,9 +205,9 @@ def login_view(request):
         if users.get(email) == password:
             request.session["user"] = email
             return redirect("/")
-        return render(request, "login.html", {"error": "Invalid login"})
+        return render(request, "shop/login.html", {"error": "Invalid login"})
 
-    return render(request, "login.html")
+    return render(request, "shop/login.html")
 
 
 @require_http_methods(["GET", "POST"])
@@ -217,7 +217,7 @@ def register(request):
         password = request.POST.get("password")
 
         if email in users:
-            return render(request, "register.html", {
+            return render(request, "shop/register.html", {
                 "error": "User already exists"
             })
 
@@ -225,7 +225,7 @@ def register(request):
         request.session["user"] = email
         return redirect("/")
 
-    return render(request, "register.html")
+    return render(request, "shop/register.html")
 
 
 def logout_view(request):
