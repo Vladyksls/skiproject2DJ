@@ -55,7 +55,9 @@ ROOT_URLCONF = 'shop.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        # Keep app templates working and also allow legacy template names
+        # like "catalog.html" in case any old view or include still uses them.
+        'DIRS': [BASE_DIR / 'shop' / 'templates', BASE_DIR / 'shop' / 'templates' / 'shop'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -115,4 +117,8 @@ USE_TZ = True
 # Static files (CSS, JavaScript, icons)
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
+
+# Allow both new paths (shop/icons/...) and legacy ones (icons/...) while
+# migrating from FastAPI-era templates.
+STATICFILES_DIRS = [BASE_DIR / 'shop' / 'static' / 'shop']

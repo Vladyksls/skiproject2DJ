@@ -2,6 +2,7 @@ from pathlib import Path
 from django.shortcuts import render, redirect
 from django.http import HttpResponse, HttpResponseNotFound
 from django.views.decorators.http import require_http_methods
+from django.urls import reverse
 
 # local data
 try:
@@ -109,7 +110,7 @@ def catalog(request, category):
     else:
         base_products = [p for p in products_obj if p.category == category]
 
-    return render(request, "catalog.html", {
+    return render(request, "shop/catalog.html", {
         "products": filtered,
         "category": category,
         "count": len(filtered),
@@ -131,11 +132,11 @@ def catalog(request, category):
 
 
 def sales_redirect(request):
-    return redirect("/catalog/sales")
+    return redirect("catalog", category="sales")
 
 
 def arrivals_redirect(request):
-    return redirect("/catalog/arrivals")
+    return redirect("catalog", category="arrivals")
 
 
 def product_page(request, pid):
@@ -148,7 +149,7 @@ def product_page(request, pid):
         if p.category == product.category and p.id != pid
     ][:4]
 
-    return render(request, "product.html", {
+    return render(request, "shop/product.html", {
         "product": product,
         "related": related
     })
@@ -159,19 +160,19 @@ def product_page(request, pid):
 def add_to_cart(request, product_id):
     user = request.session.get("user")
     if not user:
-        return redirect("/login")
+        return redirect("login")
 
     cart_store.setdefault(user, []).append(product_id)
     request.session["flash"] = "Товар додано у кошик"
 
-    return redirect(request.META.get("HTTP_REFERER", "/"))
+    return redirect(request.META.get("HTTP_REFERER") or reverse("home"))
 
 
 def remove_from_cart(request, product_id):
     user = request.session.get("user")
     if user in cart_store:
         cart_store[user] = [i for i in cart_store[user] if i != product_id]
-    return redirect("/cart")
+    return redirect("cart")
 
 
 def cart(request):
@@ -179,7 +180,7 @@ def cart(request):
     items = cart_products(cart_ids)
     total = sum(p["price"] for p in items)
 
-    return render(request, "cart.html", {
+    return render(request, "shop/cart.html", {
         "products": items,
         "total": total
     })
@@ -190,8 +191,8 @@ def cart(request):
 @require_http_methods(["GET", "POST"])
 def checkout(request):
     if request.method == "POST":
-        return redirect("/")
-    return render(request, "checkout.html")
+        return redirect("home")
+    return render(request, "shop/checkout.html")
 
 
 # -------- Auth --------
@@ -204,10 +205,10 @@ def login_view(request):
 
         if users.get(email) == password:
             request.session["user"] = email
-            return redirect("/")
-        return render(request, "login.html", {"error": "Invalid login"})
+            return redirect("home")
+        return render(request, "shop/login.html", {"error": "Invalid login"})
 
-    return render(request, "login.html")
+    return render(request, "shop/login.html")
 
 
 @require_http_methods(["GET", "POST"])
@@ -217,17 +218,17 @@ def register(request):
         password = request.POST.get("password")
 
         if email in users:
-            return render(request, "register.html", {
+            return render(request, "shop/register.html", {
                 "error": "User already exists"
             })
 
         users[email] = password
         request.session["user"] = email
-        return redirect("/")
+        return redirect("home")
 
-    return render(request, "register.html")
+    return render(request, "shop/register.html")
 
 
 def logout_view(request):
     request.session.flush()
-    return redirect("/")
+    return redirect("home")
